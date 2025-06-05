@@ -1,5 +1,6 @@
 "use client";
 
+import Breadcrumb from "@/components/common/breadcrumb";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -101,31 +102,7 @@ export default function ProductPage({ params }: { params: Promise<{ slug: string
 
     return (
         <div className="container mx-auto px-4 py-8">
-            {/* Breadcrumb */}
-            <nav className="flex mb-6" aria-label="Breadcrumb">
-                <ol className="inline-flex items-center space-x-1 md:space-x-3">
-                    <li className="inline-flex items-center">
-                    <Link href="/" className="text-sm font-medium text-muted-foreground hover:text-primary">
-                        Inicio
-                    </Link>
-                    </li>
-                    <li className="flex items-center">
-                    <ChevronRight className="w-4 h-4 text-muted-foreground" />
-                    <Link 
-                        href={`/${product.category.toLowerCase()}`} 
-                        className="ml-1 text-sm font-medium text-muted-foreground hover:text-primary"
-                    >
-                        {product.category}
-                    </Link>
-                    </li>
-                    <li className="flex items-center">
-                    <ChevronRight className="w-4 h-4 text-muted-foreground" />
-                    <span className="ml-1 text-sm font-medium text-foreground">
-                        {product.name}
-                    </span>
-                    </li>
-                </ol>
-            </nav>
+            <Breadcrumb currentPage={product.name} />
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
                 {/* Imagen del producto */}

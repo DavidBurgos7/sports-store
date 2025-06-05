@@ -1,5 +1,6 @@
 "use client";
 
+import Breadcrumb from "@/components/common/breadcrumb";
 import { ProductCard } from "@/components/products/product-card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -29,25 +30,11 @@ export default function SearchResultsPage() {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="mb-8">
-        <nav className="flex mb-4" aria-label="Breadcrumb">
-          <ol className="inline-flex items-center space-x-1 md:space-x-3">
-            <li className="inline-flex items-center">
-              <Link href="/" className="text-sm font-medium text-muted-foreground hover:text-primary">
-                Inicio
-              </Link>
-            </li>
-            <li className="flex items-center">
-              <ChevronRight className="w-4 h-4 text-muted-foreground" />
-              <span className="ml-1 text-sm font-medium text-foreground">
-                Resultados de búsqueda
-              </span>
-            </li>
-          </ol>
-        </nav>
+        <Breadcrumb currentPage="Resultados de búsqueda" />
 
         <div className="mb-6">
           <h1 className="text-2xl font-bold mb-2">
-            Resultados para "{query}"
+            Resultados de búsqueda para "{query}"
           </h1>
           <p className="text-muted-foreground">
             Se encontraron {searchResults.length} productos

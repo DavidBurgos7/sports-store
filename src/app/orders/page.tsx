@@ -1,5 +1,6 @@
 "use client";
 
+import Breadcrumb from "@/components/common/breadcrumb";
 import { OrderCard } from "@/components/orders/order-card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -54,22 +55,7 @@ export default function OrdersPage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      {/* Breadcrumb */}
-      <nav className="flex mb-6" aria-label="Breadcrumb">
-        <ol className="inline-flex items-center space-x-1 md:space-x-3">
-          <li className="inline-flex items-center">
-            <Link href="/" className="text-sm font-medium text-muted-foreground hover:text-primary">
-              Inicio
-            </Link>
-          </li>
-          <li className="flex items-center">
-            <ChevronRight className="w-4 h-4 text-muted-foreground" />
-            <span className="ml-1 text-sm font-medium text-foreground">
-              Mis Pedidos
-            </span>
-          </li>
-        </ol>
-      </nav>
+      <Breadcrumb currentPage={"Mis Pedidos"} />
 
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-6">
         <div>
