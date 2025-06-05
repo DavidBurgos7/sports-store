@@ -14,7 +14,14 @@ interface StockStore {
 export const useStockStore = create<StockStore>()(
   persist(
     (set, get) => ({
-      products: [...mockProducts],
+      products: [
+        ...mockProducts.map(product => {
+          if (!product.slug) {
+            product.slug = generateSlug(product.name);
+          }
+          return product;
+        })
+      ],
       setProducts: (products) => {
         products.map(product => {
           if (!product.slug) {
