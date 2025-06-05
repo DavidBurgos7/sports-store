@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { Order } from '../models/orders/order';
 import { OrdersStore } from '../models/orders/order-store';
-import { OrderStatus } from '../models/orders/dtos/OrderStatus';
+import { OrderStatus } from '../models/orders/order-status';
 
 export const useOrdersStore = create<OrdersStore>()(
   persist(
