@@ -28,6 +28,8 @@ export default function HomePage() {
     console.log("Filtros actualizados:", newFilters);
   };
 
+  // setProducts(products)
+
   return (
     <div className="min-h-screen bg-background">
       

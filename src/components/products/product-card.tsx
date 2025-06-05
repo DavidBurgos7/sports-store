@@ -137,7 +137,7 @@ export function ProductCard({ product, variant = "default" }: ProductCardProps) 
           </div>
 
           <CardContent className="p-4">
-            <Link href={`/product/${product.id}`}>
+            <Link href={`/product/${product.slug || product.id}`}>
             {/* Category */}
             <div className="text-xs text-muted-foreground uppercase tracking-wide mb-1">
               {product.category} • {product.brand}
