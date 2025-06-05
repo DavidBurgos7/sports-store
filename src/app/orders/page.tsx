@@ -112,7 +112,7 @@ export default function OrdersPage() {
               className="rounded-none h-12 data-[state=active]:border-b-2 data-[state=active]:border-primary relative"
             >
               Todos
-              <Badge variant="secondary" className="ml-2 font-normal">{counts.all}</Badge>
+              <Badge variant="secondary" className="ml-2 font-normal text-white">{counts.all}</Badge>
             </TabsTrigger>
             <TabsTrigger 
               value="pending" 
@@ -120,7 +120,7 @@ export default function OrdersPage() {
             >
               Pendientes
               {counts.pending > 0 && (
-                <Badge variant="secondary" className="ml-2 font-normal">{counts.pending}</Badge>
+                <Badge variant="secondary" className="ml-2 font-normal text-white">{counts.pending}</Badge>
               )}
             </TabsTrigger>
             <TabsTrigger 
@@ -129,7 +129,7 @@ export default function OrdersPage() {
             >
               Procesando
               {counts.processing > 0 && (
-                <Badge variant="secondary" className="ml-2 font-normal">{counts.processing}</Badge>
+                <Badge variant="secondary" className="ml-2 font-normal text-white">{counts.processing}</Badge>
               )}
             </TabsTrigger>
             <TabsTrigger 
@@ -138,7 +138,7 @@ export default function OrdersPage() {
             >
               Enviados
               {counts.shipped > 0 && (
-                <Badge variant="secondary" className="ml-2 font-normal">{counts.shipped}</Badge>
+                <Badge variant="secondary" className="ml-2 font-normal text-white">{counts.shipped}</Badge>
               )}
             </TabsTrigger>
             <TabsTrigger 
@@ -147,7 +147,7 @@ export default function OrdersPage() {
             >
               Entregados
               {counts.delivered > 0 && (
-                <Badge variant="secondary" className="ml-2 font-normal">{counts.delivered}</Badge>
+                <Badge variant="secondary" className="ml-2 font-normal text-white">{counts.delivered}</Badge>
               )}
             </TabsTrigger>
             <TabsTrigger 
@@ -156,7 +156,7 @@ export default function OrdersPage() {
             >
               Cancelados
               {counts.cancelled > 0 && (
-                <Badge variant="secondary" className="ml-2 font-normal">{counts.cancelled}</Badge>
+                <Badge variant="secondary" className="ml-2 font-normal text-white">{counts.cancelled}</Badge>
               )}
             </TabsTrigger>
           </TabsList>
