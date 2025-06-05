@@ -9,7 +9,7 @@ function mapProductsToSearchResults (products: Product[]): ProductSearchResult[]
       slug: generateSlug(product.name),
       price: product.price,
       originalPrice: product.originalPrice,
-      image: product.imageUrl,
+      imageUrl: product.imageUrl,
       category: product.category,
       brand: product.brand,
     }

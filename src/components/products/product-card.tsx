@@ -72,7 +72,7 @@ export function ProductCard({ product, variant = "default" }: ProductCardProps) 
               </div>
             ) : (
               <Image
-                src={product.imageUrl}
+                src={product.imageUrl ?? DEFAULT_PRODUCT_IMG_PLACEHOLDER}
                 alt={product.name}
                 fill
                 className="object-contain transition-transform duration-300 group-hover:scale-105"

@@ -51,8 +51,8 @@ export function ProductQuickView({ product, open, onOpenChange }: ProductQuickVi
   // Simular múltiples imágenes (normalmente vendrían del producto)
   const productImages = [
     product.imageUrl,
-    product.imageUrl.replace("/400/400", "/400/399"), // Truco para simular diferentes imágenes
-    product.imageUrl.replace("/400/400", "/399/400"),
+    product.imageUrl?.replace("/400/400", "/400/399"), // Truco para simular diferentes imágenes
+    product.imageUrl?.replace("/400/400", "/399/400"),
   ];
 
   // Función para agregar al carrito

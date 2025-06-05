@@ -1,13 +1,13 @@
 "use client";
 
-import React from "react";
+import { Button } from "@/components/ui/button";
+import { ProductSearchResult } from "@/lib/models/products/product-search-results";
+import { formatPrice } from "@/lib/utils";
+import { CameraOff, Loader2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import { CameraOff, Loader2 } from "lucide-react";
-import { ProductSearchResult } from "@/lib/models/products/product-search-results";
-import { formatPrice } from "@/lib/utils";
+import React from "react";
 
 const DEFAULT_PRODUCT_IMG_PLACEHOLDER: string = "/api/placeholder/400/400";
 
@@ -18,15 +18,15 @@ interface SearchResultsProps {
   onClose: () => void;
 }
 
-export const SearchResults = ({
+export default function SearchResults({
   results,
   query,
   isLoading,
   onClose,
-}: SearchResultsProps) => {
+}: SearchResultsProps) {
   const router = useRouter();
 
-  // Limitar resultados a 5 para el dropdown
+  // Limit the number of results displayed to 5
   const limitedResults = results.slice(0, 5);
   const hasMoreResults = results.length > 5;
 
@@ -77,13 +77,13 @@ export const SearchResults = ({
             <div className="flex-shrink-0 w-14 h-14 relative">
               
 
-              { product.image === DEFAULT_PRODUCT_IMG_PLACEHOLDER ? (
+              { product.imageUrl === DEFAULT_PRODUCT_IMG_PLACEHOLDER ? (
                 <div className="flex items-center justify-center h-full">
                   <CameraOff className="text-gray-500" size={150}/>
                 </div>
               ) : (
                 <Image
-                  src={product.image}
+                  src={product.imageUrl}
                   alt={product.name}
                   fill
                   sizes="56px"

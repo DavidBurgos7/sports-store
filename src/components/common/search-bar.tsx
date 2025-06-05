@@ -1,19 +1,18 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
-import { useSearchParams, useRouter, usePathname } from "next/navigation";
-import { Search, X, Loader2 } from "lucide-react";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { searchProductsByQuery } from "@/lib/search";
+import { Input } from "@/components/ui/input";
 import { ProductSearchResult } from "@/lib/models/products/product-search-results";
-import { SearchResults } from "./search-results";
+import { searchProductsByQuery } from "@/lib/search";
 import { useStockStore } from "@/lib/store/stock-store";
+import { Search, X } from "lucide-react";
+import { usePathname, useRouter } from "next/navigation";
+import React, { useEffect, useRef, useState } from "react";
+import SearchResults from "./search-results";
 
-export function SearchBar() {
+export default function SearchBar() {
   const router = useRouter();
   const pathname = usePathname();
-  const searchParams = useSearchParams();
   const searchRef = useRef<HTMLDivElement>(null);
   
   const [searchQuery, setSearchQuery] = useState("");

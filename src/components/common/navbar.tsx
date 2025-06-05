@@ -14,10 +14,10 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useCartStore } from "@/lib/store/cart-store";
-import { SearchBar } from "./search-bar";
 import { useUserInfoStore } from "@/lib/store/user-store";
 import { resetAllStores } from "@/lib/store/store-manager";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
+import SearchBar from "./search-bar";
 
 export function Navbar() {
   const pathname = usePathname();

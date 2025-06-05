@@ -4,7 +4,7 @@ export type ProductSearchResult = {
     slug: string;
     price: number;
     originalPrice?: number;
-    image: string;
+    imageUrl: string;
     category: string;
     brand: string;
   };
