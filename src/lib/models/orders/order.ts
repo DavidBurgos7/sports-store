@@ -1,5 +1,5 @@
 import { CartItem } from "../cart/cart-item";
-import { OrderStatus } from "./dtos/OrderStatus";
+import { OrderStatus } from "./order-status";
 
 export interface OrderAddress {
   firstName: string;
