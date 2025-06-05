@@ -33,14 +33,14 @@ export interface UserInfoStore {
 }
   
 const initialUserInfo: UserInfoFormData = {
-  id: 0,
-  firstName: '',
-  lastName: '',
+  id: 1,
+  firstName: 'Default',
+  lastName: 'User',
   birthDate: '',
-  shippingAddress: '',
+  shippingAddress: 'Somewhere over the hills',
   phoneNumber: '',
-  city: '',
-  state: '',
+  city: 'L.A',
+  state: 'CA',
   zipCode: '',
   country: '',
   instructions: '',
