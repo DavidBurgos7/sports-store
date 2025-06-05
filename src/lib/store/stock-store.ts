@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { Product } from '../models/products/product';
 import { generateSlug } from '../utils';
+import { mockProducts } from '../mock-data';
 
 interface StockStore {
     products: Product[];
@@ -13,7 +14,7 @@ interface StockStore {
 export const useStockStore = create<StockStore>()(
   persist(
     (set, get) => ({
-      products: [],
+      products: [...mockProducts],
       setProducts: (products) => {
         products.map(product => {
           if (!product.slug) {
