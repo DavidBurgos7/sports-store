@@ -8,7 +8,7 @@ interface StatusBadgeProps {
 }
 
 export function StatusBadge({ status }: StatusBadgeProps) {
-  const variants: Record<OrderStatus, { color: string; icon: JSX.Element, label: string }> = {
+  const variants: Record<OrderStatus, { color: string; icon: React.ReactElement, label: string }> = {
     PENDING: { 
       color: "bg-yellow-100 text-yellow-800 hover:bg-yellow-100", 
       icon: <Clock className="h-3 w-3 mr-1" />,
