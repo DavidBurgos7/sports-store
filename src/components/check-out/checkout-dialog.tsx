@@ -36,6 +36,9 @@ import {
   ArrowLeft
 } from "lucide-react";
 import { useCartStore } from "@/lib/store/cart-store";
+import { Order, OrderAddress } from "@/lib/models/orders/order";
+import { OrderStatus } from "@/lib/models/orders/order-status";
+import { useOrdersStore } from "@/lib/store/orders-store";
 
 // Schema para la dirección de envío
 const addressSchema = z.object({
@@ -63,6 +66,8 @@ export function CheckoutDialog({ open, onOpenChange }: CheckoutDialogProps) {
   const [orderNumber, setOrderNumber] = React.useState<string>('');
   const [isEditingAddress, setIsEditingAddress] = React.useState(false);
   const [confirmedAddress, setConfirmedAddress] = React.useState<AddressFormValues | null>(null);
+
+  const { addOrder } = useOrdersStore(); 
 
   const totalPrice = getTotalPrice();
   const shippingCost = 0; // Envío gratis
@@ -95,6 +100,23 @@ export function CheckoutDialog({ open, onOpenChange }: CheckoutDialogProps) {
     const orderNum = 'ORD-' + Date.now().toString(36).toUpperCase();
     setOrderNumber(orderNum);
     setStep('confirmation');
+
+    const orderForStore: Order = {
+      id: orderNum,
+      orderNumber: orderNum,
+      date: new Date().toISOString(),
+      status: OrderStatus.PENDING,
+      items: [...items],
+      shippingAddress: confirmedAddress as OrderAddress,
+      total: finalTotal,
+      subtotal: totalPrice,
+      tax: tax,
+      shippingCost: shippingCost,
+      paymentMethod: "Tarjeta de crédito", // O el método seleccionado
+      estimatedDeliveryDate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString() // Una semana después
+    };
+
+    addOrder(orderForStore);
     
     // Simular delay de procesamiento
     setTimeout(() => {
