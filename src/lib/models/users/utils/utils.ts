@@ -1,9 +1,3 @@
-    import { UserResponseDto } from "../dtos/UserResponseDto";
-
-    // Utility functions para trabajar con UserResponseDto
-    export const getUserFullName = (user: Pick<UserResponseDto, 'firstName' | 'lastName'>): string => {
-        return `${user.firstName} ${user.lastName}`;
-    };
 
     export const calculateAge = (birthDate: string): number | null => {
         if (!birthDate) return null;

@@ -17,7 +17,7 @@ import { useCartStore } from "@/lib/store/cart-store";
 import { useUserInfoStore } from "@/lib/store/user-store";
 import { resetAllStores } from "@/lib/store/store-manager";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
-import SearchBar from "./search-bar";
+import SearchBar from "../search/search-bar";
 
 export function Navbar() {
   const pathname = usePathname();

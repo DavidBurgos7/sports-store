@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Order } from "@/lib/models/orders/order";
+import { OrderStatus } from "@/lib/models/orders/order-status";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
 import { CheckCircle2, Clock, ExternalLink, Package, Truck, X } from "lucide-react";
@@ -20,7 +21,7 @@ export function OrderTimeline({ order }: OrderTimelineProps) {
     { 
       title: "Procesando", 
       description: "Preparando tu pedido",
-      status: order.status === "pending" ? "pending" : "completed", 
+      status: order.status === OrderStatus.PENDING ? OrderStatus.PENDING : OrderStatus.CONFIRMED, 
       icon: <Package className="h-4 w-4" /> 
     },
     { 
@@ -28,22 +29,22 @@ export function OrderTimeline({ order }: OrderTimelineProps) {
       description: order.trackingNumber 
         ? `Seguimiento: ${order.trackingNumber}` 
         : "Tu pedido está en camino",
-      status: order.status === "pending" || order.status === "processing" 
+      status: order.status === OrderStatus.PENDING || order.status === OrderStatus.PROCESSING
         ? "pending" 
-        : order.status === "cancelled" ? "cancelled" : "completed", 
+        : order.status === OrderStatus.CANCELLED ? OrderStatus.CANCELLED : OrderStatus.CONFIRMED, 
       icon: <Truck className="h-4 w-4" /> 
     },
     { 
       title: "Entregado", 
-      description: order.status === "delivered" 
+      description: order.status === OrderStatus.DELIVERED 
         ? `Entregado el ${order.estimatedDeliveryDate ? format(new Date(order.estimatedDeliveryDate), "d 'de' MMMM", { locale: es }) : ""}` 
         : "Pendiente de entrega",
-      status: order.status === "delivered" ? "completed" : "pending",
+      status: order.status === OrderStatus.DELIVERED ? OrderStatus.CONFIRMED : OrderStatus.PENDING,
       icon: <CheckCircle2 className="h-4 w-4" /> 
     }
   ];
 
-  if (order.status === "cancelled") {
+  if (order.status === OrderStatus.CANCELLED) {
     steps.push({
       title: "Pedido cancelado", 
       description: "Tu pedido ha sido cancelado",
@@ -80,7 +81,7 @@ export function OrderTimeline({ order }: OrderTimelineProps) {
             <h4 className="font-medium">{step.title}</h4>
             <p className="text-sm text-muted-foreground">{step.description}</p>
             
-            {step.title === "Enviado" && order.trackingNumber && order.status !== "pending" && order.status !== "processing" && order.status !== "cancelled" && (
+            {step.title === "Enviado" && order.trackingNumber && order.status !== OrderStatus.PENDING && order.status !== OrderStatus.PROCESSING && order.status !== OrderStatus.CANCELLED && (
               <Button variant="link" size="sm" className="p-0 h-auto mt-1 text-xs" asChild>
                 <a href="#" target="_blank" rel="noopener noreferrer">
                   Seguir envío <ExternalLink className="h-3 w-3 ml-1" />
