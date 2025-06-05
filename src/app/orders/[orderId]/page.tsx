@@ -20,7 +20,7 @@ import { OrderTimeline } from "@/components/orders/order-timeline";
 import { OrderSummary } from "@/components/orders/order-summary";
 import { ShippingAddress } from "@/components/orders/shipping-address";
 import { OrderProductList } from "@/components/orders/order-product-list";
-import { OrderStatus } from "@/lib/models/orders/dtos/OrderStatus";
+import { OrderStatus } from "@/lib/models/orders/order-status";
 
 
 export default function OrderDetailPage({ params }: { params: Promise<{ orderId: string }> }) {
